@@ -1,4 +1,3 @@
- ☐ move input handling to an input manager, easily remap inputs
  ☐ create an entity manager, and have that update the entities
  ☐ create a player component that can be added to an entity to drive its movement
  ☐ get physics working, with debug drawing and collisions
@@ -8,6 +7,7 @@
  ☐ build on windows and linux too
 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
 Archive:
+ ✔ move input handling to an input manager, easily remap inputs @done (14-01-11 22:30)
  ✔ get it up on the github @done (14-01-11 22:01)
  ✔ improve makefile; add header dependencies @done (14-01-11 21:45)
  ✔ move image creation to a resource manager @done (14-01-09 22:58)

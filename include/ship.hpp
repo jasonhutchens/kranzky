@@ -19,7 +19,7 @@ public:
   void update(double);
   void draw(Gosu::Image*) const;
   // InputHandler
-  virtual void handle(InputManager::Command);
+  virtual void handle(Command, KeyState);
 };
 
 //=============================================================================

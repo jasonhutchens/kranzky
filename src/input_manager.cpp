@@ -13,37 +13,53 @@ InputManager::instance() {
 
 void
 InputManager::init(Gosu::Window* window) {
-  _inputs.reserve(4);
-  _clear();
+  _inputs.resize(InputHandler::LENGTH, 0);
+}
+
+//------------------------------------------------------------------------------
+
+void
+InputManager::add_handler(InputHandler* handler) {
+  _handlers.push_back(handler);
 }
 
 //------------------------------------------------------------------------------
 
 void
 InputManager::update(double _dt) {
-  _clear();
+  // set the held flag based on what we've pressed and released this frame
+  for (std::vector<int>::iterator it = _inputs.begin(); it != _inputs.end(); ++it) {
+    if (*it&InputHandler::PRESSED) {
+      *it = *it | InputHandler::HELD;
+    }
+    if (*it&InputHandler::RELEASED) {
+      *it = *it ^ InputHandler::HELD;
+    }
+  }
+  // notify the handlers
+  for (std::vector<InputHandler*>::iterator it = _handlers.begin(); it != _handlers.end(); ++it) {
+    it->handle();
+  }
+  // clear the pressed and released flags
+  for (std::vector<int>::iterator it = _inputs.begin(); it != _inputs.end(); ++it) {
+    *it = *it & InputHandler::HELD;
+  }
+}
+
+//------------------------------------------------------------------------------
+// protected
+//------------------------------------------------------------------------------
+
+void
+InputManager::press(Gosu::Button btn) {
+  _handle(btn, InputHandler::PRESSED);
 }
 
 //------------------------------------------------------------------------------
 
 void
-InputManager::down(Gosu::Button btn) {
-  _inputs[LEFT] = _inputs[LEFT] || (btn == Gosu::kbLeft || btn == Gosu::gpLeft);
-  _inputs[RIGHT] = _inputs[RIGHT] || (btn == Gosu::kbRight || btn == Gosu::gpRight);
-  _inputs[THRUST] = _inputs[THRUST] || (btn == Gosu::kbUp || btn == Gosu::gpUp);
-  _inputs[EXIT] = _inputs[EXIT] || (btn == Gosu::kbEscape);
-}
-
-//------------------------------------------------------------------------------
-
-void
-InputManager::up(Gosu::Button btn) {
-}
-
-//------------------------------------------------------------------------------
-
-void
-InputManager::listen(Command command, InputHandler* handler) {
+InputManager::release(Gosu::Button btn) {
+  _handle(btn, InputHandler::RELEASED);
 }
 
 //------------------------------------------------------------------------------
@@ -51,11 +67,26 @@ InputManager::listen(Command command, InputHandler* handler) {
 //------------------------------------------------------------------------------
 
 void
-InputManager::_clear() {
-  _inputs[EXIT] = false;
-  _inputs[LEFT] = false;
-  _inputs[RIGHT] = false;
-  _inputs[THRUST] = false;
+InputManager::_handle(Gosu::Button btn, int state) {
+  InputHandler::Command command = InputHandler::UNDEFINED;
+  if (btn == Gosu::kbW || btn == Gosu::gpUp) {
+    command = InputHandler::LH_U;
+  }
+  if (btn == Gosu::kbS || btn == Gosu::gpDown) {
+    command = InputHandler::LH_D;
+  }
+  if (btn == Gosu::kbA || btn == Gosu::gpLeft) {
+    command = InputHandler::LH_L;
+  }
+  if (btn == Gosu::kbD || btn == Gosu::gpRight) {
+    command = InputHandler::LH_R;
+  }
+  if (btn == Gosu::kbEscape) {
+    command = InputHandler::EXIT;
+  }
+  if (command != InputHandler::UNDEFINED) {
+    _inputs[command] = _inputs[command] | state;
+  }
 }
 
 //=============================================================================

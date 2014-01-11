@@ -1,7 +1,6 @@
 #include <Gosu/Gosu.hpp>
 
 #include "asset_manager.hpp"
-
 #include "game_window.hpp"
 
 //=============================================================================
@@ -16,7 +15,7 @@ GameWindow::GameWindow() :
   _ms = _dt = 0;
   _am.init(this);
   _im.init(this);
-  listen(InputManager::EXIT);
+  listen(EXIT, PRESSED);
   _ship.warp(600, 350);
   _tick();
 }
@@ -40,9 +39,9 @@ GameWindow::draw() {
 //------------------------------------------------------------------------------
 
 void
-GameWindow::handle(InputManager::Command command) {
+GameWindow::handle(Command command, KeyState key_state) {
   switch(command) {
-  case InputManager::EXIT:
+  case EXIT:
     close();
     break;
   default:
@@ -54,14 +53,14 @@ GameWindow::handle(InputManager::Command command) {
 
 void
 GameWindow::buttonDown(Gosu::Button btn) {
-  _im.down(btn);
+  _im.press(btn);
 }
 
 //------------------------------------------------------------------------------
 
 void
 GameWindow::buttonUp(Gosu::Button btn) {
-  _im.up(btn);
+  _im.release(btn);
 }
 
 //------------------------------------------------------------------------------

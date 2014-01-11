@@ -4,9 +4,9 @@
 
 Ship::Ship(Gosu::Graphics& graphics) {
   _x = _y = _dx = _dy = _a = 0;
-  listen(InputManager::LEFT);
-  listen(InputManager::RIGHT);
-  listen(InputManager::THRUST);
+  listen(LH_L, HELD);
+  listen(LH_R, HELD);
+  listen(LH_U, HELD);
 }
 
 //------------------------------------------------------------------------------
@@ -20,19 +20,19 @@ Ship::warp(double x, double y) {
 //------------------------------------------------------------------------------
 
 void
-Ship::handle(InputManager::Command command) {
+Ship::handle(Command command, KeyState key_state) {
   switch(command) {
-  case InputManager::LEFT:
+  case LH_L:
     turnLeft();
     break;
-  case InputManager::RIGHT:
+  case LH_R:
     turnRight();
     break;
-  case InputManager::THRUST:
+  case LH_U:
     accelerate();
     break;
   default:
-    break;
+    break;  
   }
 }
 

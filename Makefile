@@ -13,6 +13,9 @@ obj/%.o: src/%.cpp
 	@mkdir -p obj
 	$(CPP) -g -Wall -MMD $(INC) -c -o $@ $<
 
+run: $(EXE)
+	$(EXE)
+
 clean:
 	-rm -fR bin obj
 

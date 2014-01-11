@@ -23,8 +23,7 @@ public:
   void draw();
   void buttonDown(Gosu::Button);
   void buttonUp(Gosu::Button);
-// Input Handler
-  virtual void handle(InputManager::Command);
+  virtual void handle(Command, KeyState);
 private:
   void _tick();
 };

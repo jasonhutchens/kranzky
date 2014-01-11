@@ -3,14 +3,20 @@
 
 //=============================================================================
 
-void
-InputHandler::listen(InputManager::Command command) {
+InputHandler::InputHandler() {
+  InputManager::instance().add_handler(this);
 }
 
 //------------------------------------------------------------------------------
 
 void
-InputHandler::handle(InputManager::Command command) {
+InputHandler::listen(Command command, KeyState key_state) {
+}
+
+//------------------------------------------------------------------------------
+
+void
+InputHandler::handle(Command command, KeyState key_state) {
 }
 
 //=============================================================================

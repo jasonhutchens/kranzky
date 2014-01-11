@@ -7,8 +7,30 @@
 
 class InputHandler {
 public:
-  void listen(InputManager::Command);
-  virtual void handle(InputManager::Command);
+  enum Command {
+    LH_U,
+    LH_D,
+    LH_L,
+    LH_R,
+    RH_U,
+    RH_D,
+    RH_L,
+    RH_R,
+    PREV,
+    NEXT,
+    PAUSE,
+    EXIT,
+    LENGTH,
+    UNDEFINED
+  };
+  enum KeyState {
+    PRESSED = 1,
+    HELD = 2,
+    RELEASED = 4
+  };
+  InputHandler();
+  void listen(Command, KeyState);
+  virtual void handle(Command, KeyState);
 };
 
 //=============================================================================
