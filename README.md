@@ -1,13 +1,5 @@
-```
-                     -----------------------------------
-                     +++ K R A N Z K Y | E N G I N E +++
-                     |                 +               |
-                     |     by The Kranzky Brothers     |
-                     +---------------------------------+
-```
-
-About
-=====
+Kranzky Engine
+==============
 
 A C++ 2D game engine for OSX, Linux and Windows, featuring:
 
@@ -45,5 +37,3 @@ Development (OSX)
    c) ./configure
    d) make ; make install
 4. Good to go; type make
-
-
