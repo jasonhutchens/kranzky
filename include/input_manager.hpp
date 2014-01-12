@@ -4,13 +4,13 @@
 #include <Gosu/Gosu.hpp>
 #include <vector>
 
-//=============================================================================
+#include "input_handler.hpp"
 
-class InputHandler;
+//=============================================================================
 
 class InputManager {
   friend class GameWindow;
-  std::vector<int> _inputs;
+  std::vector<InputHandler::KeyState> _inputs;
   std::vector<InputHandler*> _handlers;
  public:
   static InputManager& instance();
