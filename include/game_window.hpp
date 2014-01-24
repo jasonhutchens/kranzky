@@ -1,7 +1,7 @@
 #ifndef GAME_WINDOW_HPP
 #define GAME_WINDOW_HPP
 
-#include <Gosu/Gosu.hpp>
+#include <SDL2/SDL.h>
 
 #include "input_handler.hpp"
 #include "ship.hpp"

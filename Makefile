@@ -2,7 +2,7 @@ CPP := g++
 EXE := bin/kranzky
 SRC := $(wildcard src/*.cpp)
 OBJ := $(addprefix obj/,$(notdir $(SRC:.cpp=.o)))
-LIB := -lbox2d -lczmq -framework gosu
+LIB := -lbox2d -lczmq -lsdl2
 INC := -I include
 
 all: run
