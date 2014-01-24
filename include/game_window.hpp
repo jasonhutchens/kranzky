@@ -11,21 +11,13 @@
 class AssetManager;
 class InputManager;
 
-class GameWindow : public Gosu::Window, public InputHandler {
-  AssetManager& _am;
-  InputManager& _im;
-  double _ms;
-  double _dt;
-  Ship _p1;
-  Ship _p2;
-  Ship _p3;
-  Ship _p4;
+class GameWindow : public InputHandler {
+  SDL_Window* _window;
 public:
-  GameWindow();
+  GameWindow(const char*);
+  void show();
   void update();
   void draw();
-  void buttonDown(Gosu::Button);
-  void buttonUp(Gosu::Button);
   virtual void handle(Command, KeyState);
 private:
   void _tick();

@@ -10,7 +10,7 @@ int main() {
     return 1;
   }
   atexit(SDL_Quit);
-  GameWindow window;
+  GameWindow window("Dwarf Squad");
   window.show();
 }
 

@@ -8,13 +8,11 @@ InputHandler::InputHandler() {
 }
 
 //------------------------------------------------------------------------------
-
 void
 InputHandler::listen(Command command, KeyState key_state) {
 }
 
 //------------------------------------------------------------------------------
-
 bool
 InputHandler::wants(Command command, KeyState key_state) {
   return true;
