@@ -1,4 +1,6 @@
 #include <Gosu/Gosu.hpp>
+#include <Box2D/Box2D.h>
+#include <czmq.h>
 
 #include "asset_manager.hpp"
 #include "game_window.hpp"
@@ -15,6 +17,17 @@ GameWindow::GameWindow() :
   _ms = _dt = 0;
   _am.init(this);
   _im.init(this);
+
+  // load images
+  _am.add_image(L"assets/images/ship.png");
+
+  // this should be a physics manager
+  b2Vec2 gravity(0.0f, -10.0f);
+  b2World world(gravity);
+
+  // and this should be a network manager
+  zctx_t* ctx = zctx_new();
+
   listen(EXIT, PRESSED);
   _ship.warp(600, 350);
   _tick();
@@ -33,7 +46,7 @@ GameWindow::update() {
 
 void
 GameWindow::draw() {
-  _ship.draw(_am.get(0));
+  _ship.draw();
 }
 
 //------------------------------------------------------------------------------

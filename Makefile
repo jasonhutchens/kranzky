@@ -2,8 +2,10 @@ CPP := g++
 EXE := bin/kranzky
 SRC := $(wildcard src/*.cpp)
 OBJ := $(addprefix obj/,$(notdir $(SRC:.cpp=.o)))
-LIB := -lbox2d -lzmq -framework Gosu
+LIB := -lbox2d -lczmq -framework gosu
 INC := -I include
+
+all: run
 
 $(EXE): $(OBJ)
 	@mkdir -p bin

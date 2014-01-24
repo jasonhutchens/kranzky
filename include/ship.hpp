@@ -10,6 +10,7 @@
 
 class Ship : public InputHandler {
   double _x, _y, _dx, _dy, _a;
+  std::wstring _name;
 public:
   Ship(Gosu::Graphics&);
   void warp(double, double);
@@ -17,7 +18,7 @@ public:
   void turnRight();
   void accelerate();
   void update(double);
-  void draw(Gosu::Image*) const;
+  void draw() const;
   // InputHandler
   virtual void handle(Command, KeyState);
 };

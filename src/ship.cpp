@@ -1,9 +1,12 @@
 #include "ship.hpp"
+#include "asset_manager.hpp"
 
 //=============================================================================
 
 Ship::Ship(Gosu::Graphics& graphics) {
   _x = _y = _dx = _dy = _a = 0;
+  std::string tmp(getenv("USER"));
+  _name.assign(tmp.begin(), tmp.end());
   listen(LH_L, HELD);
   listen(LH_R, HELD);
   listen(LH_U, HELD);
@@ -71,8 +74,11 @@ Ship::update(double _dt) {
 //------------------------------------------------------------------------------
 
 void
-Ship::draw(Gosu::Image* image) const {
-  image->drawRot(_x, _y, 1, _a, 0.5, 0.5, 4, 4);
+Ship::draw() const {
+  AssetManager& am(AssetManager::instance());
+  float width = am.get_font()->textWidth(_name, 0.5);
+  am.get(0)->drawRot(_x, _y, 1, _a, 0.5, 0.5, 1, 1);
+  am.get_font()->draw(_name, _x - width * 0.5, _y + 18, 1, 0.7, 0.7, 0xAAFFFFFF);
 }
 
 //=============================================================================

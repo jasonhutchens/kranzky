@@ -1,10 +1,23 @@
- ☐ create an entity manager, and have that update the entities
+ ☐ rename AssetManager to AssetStore
+ ☐ figure out how to do game state, and transition between states
+ ☐ have systems own a list of their components which they pre-allocate
+ ☐ implement EntitySystem, which is responsible for owning / updating managers
+ ☐ determine the best way of communicating between components (messages)
+ ☐ components have init, fini, update and render
+ ☐ they should make their dependencies explicit
+ ☐ create Entity class that is just a container for components which EM owns
+ ☐ Entity has add_component, had_component, get_component, 
+ ☐ Allow managers to update at custom tick rates, via EntityManager
+ ☐ create a component to store positional data
  ☐ create a player component that can be added to an entity to drive its movement
- ☐ get physics working, with debug drawing and collisions
- ☐ make all these things pretty data driven
+ ☐ update all managers and get entity moving around
+ ☐ get physics working, with debug drawing and collisions, again via a component
  ☐ get local multiplayer working with service discovery; another manager
  ☐ flesh out into a bomberman melee with sound, animation and UI
+ ☐ make all the things pretty data driven
  ☐ build on windows and linux too
+ ☐ extract out into generic game engine plus bomberman game as separate repo
+ ☐ look at Cap'nProto as a good serialisation technique for in-memory C++ structs
 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
 Archive:
  ✔ move input handling to an input manager, easily remap inputs @done (14-01-11 22:30)

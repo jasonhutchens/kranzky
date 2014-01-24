@@ -24,16 +24,25 @@ Development (OSX)
 
 0. Ensure you have the command-line devtools installed
 1. Install the GOSU framework
-   a) Download latest gosu-mac-0.7.x.tar.gz to http://www.libgosu.org/downloads/
-   b) Unzip and copy to /Library/Frameworks
+   a) brew install gosu
 2. Install Box2D
-   a) Download Box2D\_v2.1.2.zip from https://code.google.com/p/box2d/downloads/list
-   b) Unzip and cd to Box2D\_v2.1.2/Box2D/Build
-   c) cmake -DBOX2D\_INSTALL=ON -DBOX2D\_BUILD\_SHARED=ON ..
-   d) make ; make install
+   a) brew install box2d
 3. Install ZeroMQ
-   a) Download zeromq-3.2.4.tar.gz from http://zeromq.org/intro:get-the-software
-   b) Unzip and cd to zeromq-3.2.4
-   c) ./configure
-   d) make ; make install
+   a) brew install --universal zeromq
+   b) brew install --universal czmq
 4. Good to go; type make
+
+Design
+------
+
+* Game Engine
+  + AssetManager
+  + InputManeger
+  + SceneManager
+  + EntityManager
+    - List of Systems
+    - List of Entities
+  + System
+    - PhysicsSystem
+    - PlayerSystem
+    - ...
