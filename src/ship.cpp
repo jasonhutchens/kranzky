@@ -77,18 +77,15 @@ Ship::update(double _dt) {
 void
 Ship::draw() const {
   AssetManager& am(AssetManager::instance());
-  float width(0.0);
-  float height(0.0);
-  Gosu::Image* image(am.get(0));
   am.get(0)->drawRot(_x, _y, 1, _a, 0.5, 0.5, 1, 1);
-  width = am.get_font()->textWidth(_name, 0.7);
-  am.get_font()->draw(_name, _x - width * 0.5, _y + 18, 1, 0.7, 0.7, 0xAAFFFFFF);
+  float width = am.get_font()->textWidth(_name, 0.7);
+  am.get_font()->draw(_name, _x - width * 0.5, _y + 18, 999, 0.7, 0.7, 0xAAFFFFFF);
   _graphics->drawQuad(
-    _x-1, _y-1, 0xFFFFFFFF,
-    _x+1, _y-1, 0xFFFFFFFF,
-    _x+1, _y+1, 0xFFFFFFFF,
-    _x-1, _y+1, 0xFFFFFFFF,
-    1
+    _x-16, _y-16, 0x88FF00FF,
+    _x+16, _y-16, 0x88FF00FF,
+    _x+16, _y+16, 0x88FF00FF,
+    _x-16, _y+16, 0x88FF00FF,
+    0
   );
 }
 
