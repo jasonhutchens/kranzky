@@ -11,6 +11,7 @@
 class Ship : public InputHandler {
   double _x, _y, _dx, _dy, _a;
   std::wstring _name;
+  Gosu::Graphics* _graphics;
 public:
   Ship(Gosu::Graphics&);
   void warp(double, double);

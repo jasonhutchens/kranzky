@@ -4,6 +4,7 @@
 //=============================================================================
 
 Ship::Ship(Gosu::Graphics& graphics) {
+  _graphics = &graphics;
   _x = _y = _dx = _dy = _a = 0;
   std::string tmp(getenv("USER"));
   _name.assign(tmp.begin(), tmp.end());
@@ -76,9 +77,19 @@ Ship::update(double _dt) {
 void
 Ship::draw() const {
   AssetManager& am(AssetManager::instance());
-  float width = am.get_font()->textWidth(_name, 0.5);
+  float width(0.0);
+  float height(0.0);
+  Gosu::Image* image(am.get(0));
   am.get(0)->drawRot(_x, _y, 1, _a, 0.5, 0.5, 1, 1);
+  width = am.get_font()->textWidth(_name, 0.7);
   am.get_font()->draw(_name, _x - width * 0.5, _y + 18, 1, 0.7, 0.7, 0xAAFFFFFF);
+  _graphics->drawQuad(
+    _x-1, _y-1, 0xFFFFFFFF,
+    _x+1, _y-1, 0xFFFFFFFF,
+    _x+1, _y+1, 0xFFFFFFFF,
+    _x-1, _y+1, 0xFFFFFFFF,
+    1
+  );
 }
 
 //=============================================================================
