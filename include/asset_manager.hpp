@@ -7,13 +7,16 @@
 
 class AssetManager {
   std::vector<Gosu::Image*> _images;
+  std::vector<Gosu::Sample*> _samples;
   Gosu::Window* _window;
   Gosu::Font* _font;
 public:
   static AssetManager& instance();
   void init(Gosu::Window*);
   int add_image(std::wstring);
-  Gosu::Image* get(int);
+  int add_sound(std::wstring);
+  Gosu::Image* get_image(int);
+  Gosu::Sample* get_sound(int);
   Gosu::Font* get_font();
 private:
   AssetManager() {}

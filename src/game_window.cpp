@@ -18,8 +18,9 @@ GameWindow::GameWindow() :
   _am.init(this);
   _im.init(this);
 
-  // load images
+  // load assets
   _am.add_image(L"assets/images/ship.png");
+  _am.add_sound(L"assets/sounds/collect.wav");
 
   // this should be a physics manager
   b2Vec2 gravity(0.0f, -10.0f);

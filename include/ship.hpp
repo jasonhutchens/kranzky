@@ -18,6 +18,7 @@ public:
   void turnLeft();
   void turnRight();
   void accelerate();
+  void fire();
   void update(double);
   void draw() const;
   // InputHandler

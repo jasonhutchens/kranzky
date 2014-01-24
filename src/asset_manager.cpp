@@ -22,12 +22,26 @@ AssetManager::init(Gosu::Window* window) {
 int
 AssetManager::add_image(std::wstring path) {
   _images.push_back(new Gosu::Image(_window->graphics(), Gosu::sharedResourcePrefix() + path, false));
+  return _images.size()-1;
+}
+
+//------------------------------------------------------------------------------
+int
+AssetManager::add_sound(std::wstring path) {
+  _samples.push_back(new Gosu::Sample(Gosu::sharedResourcePrefix() + path));
+  return _samples.size()-1;
 }
 
 //------------------------------------------------------------------------------
 Gosu::Image*
-AssetManager::get(int index) {
+AssetManager::get_image(int index) {
   return _images[index];
+}
+
+//------------------------------------------------------------------------------
+Gosu::Sample*
+AssetManager::get_sound(int index) {
+  return _samples[index];
 }
 
 //------------------------------------------------------------------------------

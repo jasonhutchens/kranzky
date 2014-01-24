@@ -11,10 +11,10 @@ Ship::Ship(Gosu::Graphics& graphics) {
   listen(LH_L, HELD);
   listen(LH_R, HELD);
   listen(LH_U, HELD);
+  listen(LH_D, PRESSED);
 }
 
 //------------------------------------------------------------------------------
-
 void
 Ship::warp(double x, double y) {
   _x = x;
@@ -22,7 +22,6 @@ Ship::warp(double x, double y) {
 }
 
 //------------------------------------------------------------------------------
-
 void
 Ship::handle(Command command, KeyState key_state) {
   switch(command) {
@@ -35,27 +34,27 @@ Ship::handle(Command command, KeyState key_state) {
   case LH_U:
     accelerate();
     break;
+  case LH_D:
+    fire();
+    break;
   default:
     break;  
   }
 }
 
 //------------------------------------------------------------------------------
-
 void
 Ship::turnLeft() {
   _a -= 4.5;
 }
 
 //------------------------------------------------------------------------------
-
 void
 Ship::turnRight() {
   _a += 4.5;
 }
 
 //------------------------------------------------------------------------------
-
 void
 Ship::accelerate() {
   _dx += Gosu::offsetX(_a, 0.5);
@@ -63,7 +62,13 @@ Ship::accelerate() {
 }
 
 //------------------------------------------------------------------------------
+void
+Ship::fire() {
+  AssetManager& am(AssetManager::instance());
+  am.get_sound(0)->play();
+}
 
+//------------------------------------------------------------------------------
 void
 Ship::update(double _dt) {
   _x = Gosu::wrap(_x + _dx, 0.0, 1200.0);
@@ -73,11 +78,10 @@ Ship::update(double _dt) {
 }
 
 //------------------------------------------------------------------------------
-
 void
 Ship::draw() const {
   AssetManager& am(AssetManager::instance());
-  am.get(0)->drawRot(_x, _y, 1, _a, 0.5, 0.5, 1, 1);
+  am.get_image(0)->drawRot(_x, _y, 1, _a, 0.5, 0.5, 1, 1);
   float width = am.get_font()->textWidth(_name, 0.7);
   am.get_font()->draw(_name, _x - width * 0.5, _y + 18, 999, 0.7, 0.7, 0xAAFFFFFF);
   _graphics->drawQuad(
