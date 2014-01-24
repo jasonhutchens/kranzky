@@ -11,10 +11,10 @@ GameWindow::GameWindow() :
   Gosu::Window(1200, 675, false),
   _am(AssetManager::instance()),
   _im(InputManager::instance()),
-  _p1(graphics(), L"Player 1", 0x88FF00FF, LH_U, LH_D, LH_L, LH_R),
-  _p2(graphics(), L"Player 2", 0x88FF0000, LH_N, LH_S, LH_E, LH_W),
-  _p3(graphics(), L"Player 3", 0x8800FF00, RH_U, RH_D, RH_L, RH_R),
-  _p4(graphics(), L"Player 4", 0x8800FFFF, RH_N, RH_S, RH_E, RH_W)
+  _p1(graphics(), L"Player 1", 0x88FF00FF, LH_U, LH_D, RH_E, RH_W),
+  _p2(graphics(), L"Player 2", 0x88FF0000, LH_N, LH_S, LH_L, LH_R),
+  _p3(graphics(), L"Player 3", 0x8800FF00, RH_U, RH_D, LH_E, LH_W),
+  _p4(graphics(), L"Player 4", 0x8800FFFF, RH_N, RH_S, RH_L, RH_R)
 {
   setCaption(L"Hello World!");
   _ms = _dt = 0;
