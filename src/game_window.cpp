@@ -11,7 +11,10 @@ GameWindow::GameWindow() :
   Gosu::Window(1200, 675, false),
   _am(AssetManager::instance()),
   _im(InputManager::instance()),
-  _ship(graphics())
+  _p1(graphics(), L"Player 1", 0x88FF00FF, LH_U, LH_D, LH_L, LH_R),
+  _p2(graphics(), L"Player 2", 0x88FF0000, LH_N, LH_S, LH_E, LH_W),
+  _p3(graphics(), L"Player 3", 0x8800FF00, RH_U, RH_D, RH_L, RH_R),
+  _p4(graphics(), L"Player 4", 0x8800FFFF, RH_N, RH_S, RH_E, RH_W)
 {
   setCaption(L"Hello World!");
   _ms = _dt = 0;
@@ -30,7 +33,10 @@ GameWindow::GameWindow() :
   zctx_t* ctx = zctx_new();
 
   listen(EXIT, PRESSED);
-  _ship.warp(600, 350);
+  _p1.warp(400, 150);
+  _p2.warp(800, 150);
+  _p3.warp(400, 550);
+  _p4.warp(800, 550);
   _tick();
 }
 
@@ -40,14 +46,20 @@ void
 GameWindow::update() {
   _tick();
   _im.update(_dt);
-  _ship.update(_dt);
+  _p1.update(_dt);
+  _p2.update(_dt);
+  _p3.update(_dt);
+  _p4.update(_dt);
 }
 
 //------------------------------------------------------------------------------
 
 void
 GameWindow::draw() {
-  _ship.draw();
+  _p1.draw();
+  _p2.draw();
+  _p3.draw();
+  _p4.draw();
 }
 
 //------------------------------------------------------------------------------

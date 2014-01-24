@@ -16,7 +16,10 @@ class GameWindow : public Gosu::Window, public InputHandler {
   InputManager& _im;
   double _ms;
   double _dt;
-  Ship _ship;
+  Ship _p1;
+  Ship _p2;
+  Ship _p3;
+  Ship _p4;
 public:
   GameWindow();
   void update();

@@ -83,6 +83,42 @@ InputManager::_handle(Gosu::Button btn, int state) {
   if (btn == Gosu::kbD || btn == Gosu::gpRight) {
     command = InputHandler::LH_R;
   }
+  if (btn == Gosu::kbI || btn == Gosu::gpButton0) {
+    command = InputHandler::LH_N;
+  }
+  if (btn == Gosu::kbK || btn == Gosu::gpButton1) {
+    command = InputHandler::LH_S;
+  }
+  if (btn == Gosu::kbJ || btn == Gosu::gpButton2) {
+    command = InputHandler::LH_E;
+  }
+  if (btn == Gosu::kbL || btn == Gosu::gpButton3) {
+    command = InputHandler::LH_W;
+  }
+  if (btn == Gosu::kbUp || btn == Gosu::gpButton14) {
+    command = InputHandler::RH_U;
+  }
+  if (btn == Gosu::kbDown || btn == Gosu::gpButton11) {
+    command = InputHandler::RH_D;
+  }
+  if (btn == Gosu::kbLeft || btn == Gosu::gpButton13) {
+    command = InputHandler::RH_L;
+  }
+  if (btn == Gosu::kbRight || btn == Gosu::gpButton12) {
+    command = InputHandler::RH_R;
+  }
+  if (btn == Gosu::kbG) {
+    command = InputHandler::RH_N;
+  }
+  if (btn == Gosu::kbB) {
+    command = InputHandler::RH_S;
+  }
+  if (btn == Gosu::kbV) {
+    command = InputHandler::RH_E;
+  }
+  if (btn == Gosu::kbN) {
+    command = InputHandler::RH_W;
+  }
   if (btn == Gosu::kbEscape) {
     command = InputHandler::EXIT;
   }

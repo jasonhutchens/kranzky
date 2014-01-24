@@ -9,16 +9,14 @@
 //=============================================================================
 
 class Ship : public InputHandler {
-  double _x, _y, _dx, _dy, _a;
+  double _x, _y, _dx, _dy, _ax, _ay;
+  unsigned _c;
+  int _u, _d, _l, _r;
   std::wstring _name;
   Gosu::Graphics* _graphics;
 public:
-  Ship(Gosu::Graphics&);
+  Ship(Gosu::Graphics&, std::wstring, unsigned, int, int, int, int);
   void warp(double, double);
-  void turnLeft();
-  void turnRight();
-  void accelerate();
-  void fire();
   void update(double);
   void draw() const;
   // InputHandler
