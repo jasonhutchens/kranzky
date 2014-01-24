@@ -22,15 +22,9 @@ extract a generic engine and break the game out into a seperate project.
 Development (OSX)
 -----------------
 
-0. Ensure you have the command-line devtools installed
-1. Install the GOSU framework
-   a) brew install gosu
-2. Install Box2D
-   a) brew install box2d
-3. Install ZeroMQ
-   a) brew install --universal zeromq
-   b) brew install --universal czmq
-4. Good to go; type make
+0. Ensure you have homebrew + the command-line devtools installed
+1. "brew bundle"
+2. "make"
 
 Design
 ------
